@@ -15,6 +15,10 @@ public class Restaurant {
     return name;
   }
 
+  public int getId() {
+    return id;
+  }
+
   public static List<Restaurant> all() {
     String sql = "SELECT id, name FROM restaurants;";
     try(Connection con = DB.sql2o.open()) {

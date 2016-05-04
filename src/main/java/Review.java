@@ -21,4 +21,14 @@ public class Review {
     }
   }
 
+  @Override
+  public boolean equals(Object otherReview) {
+    if (!(otherReview instanceof Review)) {
+      return false;
+    } else {
+      Review myReview = (Review) otherReview;
+      return this.getDescription().equals(myReview.getDescription());
+    }
+  }
+
 }

@@ -36,4 +36,11 @@ public class ReviewTest {
   public void all_emptyAtFirst() {
     assertEquals(0, Review.all().size());
   }
+
+  @Test
+  public void equals_returnsTrueIfDescriptionsAreTheSame() {
+    Review firstReview = new Review("Hey it's good");
+    Review secondReview = new Review("Hey it's good");
+    assertTrue(firstReview.equals(secondReview));
+  }
 }

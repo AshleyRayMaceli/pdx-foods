@@ -19,6 +19,10 @@ public class Review {
     return description;
   }
 
+  public int getRestaurantId() {
+    return restaurant_id;
+  }
+
   public int getId() {
     return id;
   }
@@ -57,7 +61,8 @@ public class Review {
       return false;
     } else {
       Review myReview = (Review) otherReview;
-      return this.getDescription().equals(myReview.getDescription());
+      return this.getDescription().equals(myReview.getDescription()) &&
+             this.getRestaurantId() == (myReview.getRestaurantId());
     }
   }
 

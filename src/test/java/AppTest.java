@@ -41,4 +41,12 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("PDX Foods");
   }
 
+  @Test
+  public void restaurantsPageDisplaysAllRestaurants() {
+    goTo("http://localhost:4567/");
+    click("a", withText("View All Restaurants"));
+    assertThat(pageSource().contains("Boxer Ramen"));
+    assertThat(pageSource().contains("Salt and Straw"));
+  }
+
 }

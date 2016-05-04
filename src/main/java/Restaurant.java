@@ -23,6 +23,16 @@ public class Restaurant {
     }
   }
 
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO restaurants(name) VALUES (:name);";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
   @Override
   public boolean equals(Object otherRestaurant) {
     if (!(otherRestaurant instanceof Restaurant)) {

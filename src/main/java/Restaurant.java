@@ -22,4 +22,14 @@ public class Restaurant {
       .executeAndFetch(Restaurant.class);
     }
   }
+
+  @Override
+  public boolean equals(Object otherRestaurant) {
+    if (!(otherRestaurant instanceof Restaurant)) {
+      return false;
+    } else {
+      Restaurant newRestaurant = (Restaurant) otherRestaurant;
+      return this.getName().equals(newRestaurant.getName());
+    }
+  }
 }

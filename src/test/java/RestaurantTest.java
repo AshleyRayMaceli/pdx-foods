@@ -36,4 +36,11 @@ public class RestaurantTest {
     assertEquals(0, Restaurant.all().size());
   }
 
+  @Test
+  public void equals_returnsTrueIfNamesAreTheSame() {
+    Restaurant firstRestaurant = new Restaurant("Ruby Jewel");
+    Restaurant secondRestaurant = new Restaurant("Ruby Jewel");
+    assertTrue(firstRestaurant.equals(secondRestaurant));
+  }
+
 }

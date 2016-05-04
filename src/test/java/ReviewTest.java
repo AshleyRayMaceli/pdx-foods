@@ -25,4 +25,10 @@ public class ReviewTest {
     Review myReview = new Review("Just the best!");
     assertEquals(true, myReview instanceof Review);
   }
+
+  @Test
+  public void getDescription_reviewInstantiatesWithDescription_String() {
+    Review myReview = new Review("Just the best!");
+    assertEquals("Just the best!", myReview.getDescription());
+  }
 }

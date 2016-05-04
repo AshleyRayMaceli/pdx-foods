@@ -10,4 +10,8 @@ public class Review {
     this.description = description;
   }
 
+  public String getDescription() {
+    return description;
+  }
+
 }

@@ -23,5 +23,13 @@ public class App {
       model.put("template", "templates/restaurants.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/restaurants/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Restaurant restaurant = Restaurant.find(Integer.parseInt(request.params(":id")));
+      model.put("restaurant", restaurant);
+      model.put("template", "templates/restaurant.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }

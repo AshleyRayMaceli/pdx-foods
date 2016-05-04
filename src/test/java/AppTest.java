@@ -49,4 +49,9 @@ public class AppTest extends FluentTest {
     assertThat(pageSource().contains("Salt and Straw"));
   }
 
+  @Test
+  public void individualRestaurantPageDisplayedById() {
+    goTo("http://localhost:4567/restaurants/4");
+    assertThat(pageSource().contains("Boxer Ramen"));
+  }
 }

@@ -14,6 +14,10 @@ public class Review {
     return description;
   }
 
+  public int getId() {
+    return id;
+  }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO reviews(description) VALUES (:description)";
@@ -28,6 +32,16 @@ public class Review {
     String sql = "SELECT id, description FROM reviews;";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Review.class);
+    }
+  }
+
+  public static Review find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM reviews WHERE id=:id;";
+      Review review = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Review.class);
+      return review;
     }
   }
 

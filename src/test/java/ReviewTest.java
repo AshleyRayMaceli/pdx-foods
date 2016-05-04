@@ -50,4 +50,12 @@ public class ReviewTest {
     myReview.save();
     assertTrue(Review.all().get(0).equals(myReview));
   }
+
+  @Test
+  public void find_findsReviewInDatabase_true() {
+    Review myReview = new Review("Amazing!");
+    myReview.save();
+    Review savedReview = Review.find(myReview.getId());
+    assertTrue(myReview.equals(savedReview));
+  }
 }

@@ -57,7 +57,7 @@ public class AppTest extends FluentTest {
   public void submittedReviewIsDisplayedOnRestaurantPage() {
     goTo("http://localhost:4567/restaurants/4");
     fill("#review").with("I love this place!");
-    submit(".btn");
+    submit("#submitReview");
     assertThat(pageSource().contains("I love this place!"));
   }
 }

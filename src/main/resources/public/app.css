@@ -1,0 +1,16 @@
+body {
+  /*font-family: 'FONT NAME HERE', sans-serif;*/
+  text-align: center;
+  background: url(/home1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+  color: white;
+}
+
+#review {
+  width: 400px;
+  height: 150px;
+  color: black;
+  font-size: 2em;
+}

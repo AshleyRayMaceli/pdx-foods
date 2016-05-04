@@ -19,4 +19,10 @@ public class ReviewTest {
       con.createQuery(deleteRestaurantsQuery).executeUpdate();
     }
   }
+
+  @Test
+  public void review_instantiatesCorrectly_true() {
+    Review myReview = new Review("Just the best!");
+    assertEquals(true, myReview instanceof Review);
+  }
 }

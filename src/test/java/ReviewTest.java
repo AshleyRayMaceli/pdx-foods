@@ -31,4 +31,9 @@ public class ReviewTest {
     Review myReview = new Review("Just the best!");
     assertEquals("Just the best!", myReview.getDescription());
   }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(0, Review.all().size());
+  }
 }

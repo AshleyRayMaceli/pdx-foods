@@ -14,4 +14,11 @@ public class Review {
     return description;
   }
 
+  public static List<Review> all() {
+    String sql = "SELECT id, description FROM reviews;";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Review.class);
+    }
+  }
+
 }

@@ -14,6 +14,16 @@ public class Review {
     return description;
   }
 
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO reviews(description) VALUES (:description)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("description", this.description)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
   public static List<Review> all() {
     String sql = "SELECT id, description FROM reviews;";
     try(Connection con = DB.sql2o.open()) {

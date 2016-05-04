@@ -43,4 +43,11 @@ public class ReviewTest {
     Review secondReview = new Review("Hey it's good");
     assertTrue(firstReview.equals(secondReview));
   }
+
+  @Test
+  public void save_savesReviewIntoDatabase_true() {
+    Review myReview = new Review("I guess it's kinda okay");
+    myReview.save();
+    assertTrue(Review.all().get(0).equals(myReview));
+  }
 }

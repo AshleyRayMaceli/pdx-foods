@@ -31,4 +31,9 @@ public class RestaurantTest {
     assertEquals("Boxer Ramen", myRestaurant.getName());
   }
 
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(0, Restaurant.all().size());
+  }
+
 }

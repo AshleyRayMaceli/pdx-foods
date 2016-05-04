@@ -58,4 +58,12 @@ public class RestaurantTest {
     assertEquals(myRestaurant.getId(), savedRestaurant.getId());
   }
 
+  @Test
+  public void find_findsRestaurantInDatabase_true() {
+    Restaurant myRestaurant = new Restaurant("Blue Star Donuts");
+    myRestaurant.save();
+    Restaurant savedRestaurant = Restaurant.find(myRestaurant.getId());
+    assertTrue(myRestaurant.equals(savedRestaurant));
+  }
+
 }

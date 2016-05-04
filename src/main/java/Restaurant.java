@@ -37,6 +37,16 @@ public class Restaurant {
     }
   }
 
+  public static Restaurant find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM restaurants WHERE id=:id";
+      Restaurant myRestaurant = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Restaurant.class);
+      return myRestaurant;
+    }
+  }
+
   @Override
   public boolean equals(Object otherRestaurant) {
     if (!(otherRestaurant instanceof Restaurant)) {

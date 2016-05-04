@@ -39,11 +39,20 @@ public class Restaurant {
 
   public static Restaurant find(int id) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM restaurants WHERE id=:id";
+      String sql = "SELECT * FROM restaurants WHERE id=:id;";
       Restaurant myRestaurant = con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Restaurant.class);
       return myRestaurant;
+    }
+  }
+
+  public List<Review> getReviews() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM reviews WHERE restaurant_id=:id;";
+      return con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeAndFetch(Review.class);
     }
   }
 

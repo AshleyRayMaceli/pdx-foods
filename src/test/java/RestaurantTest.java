@@ -1,6 +1,7 @@
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.Arrays;
 
 public class RestaurantTest {
 
@@ -64,6 +65,18 @@ public class RestaurantTest {
     myRestaurant.save();
     Restaurant savedRestaurant = Restaurant.find(myRestaurant.getId());
     assertTrue(myRestaurant.equals(savedRestaurant));
+  }
+
+  @Test
+  public void getReviews_retrievesAllReviewsFromDatabase_reviewsList() {
+    Restaurant myRestaurant = new Restaurant("Lardo");
+    myRestaurant.save();
+    Review firstReview = new Review("Da fries are DA BOMB.com", myRestaurant.getId());
+    firstReview.save();
+    Review secondReview = new Review("Da buffchik is dope", myRestaurant.getId());
+    secondReview.save();
+    Review[] reviews = new Review[] { firstReview, secondReview };
+    assertTrue(myRestaurant.getReviews().containsAll(Arrays.asList(reviews)));
   }
 
 }

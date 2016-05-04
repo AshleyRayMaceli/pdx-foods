@@ -1,10 +1,10 @@
-
 import java.util.List;
 import org.sql2o.*;
 
 public class Review {
   private int id;
   private String description;
+  private int restaurant_id;
 
   public Review(String description) {
     this.description = description;

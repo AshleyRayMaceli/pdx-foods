@@ -31,5 +31,17 @@ public class App {
       model.put("template", "templates/restaurant.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/restaurants/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Restaurant restaurant = Restaurant.find(Integer.parseInt(request.params(":id")));
+      String description = request.queryParams("review");
+      Review newReview = new Review(description, restaurant.getId());
+      newReview.save();
+      model.put("restaurant", restaurant);
+      model.put("template", "templates/restaurant.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }

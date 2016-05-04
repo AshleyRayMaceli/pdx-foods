@@ -1,3 +1,22 @@
 <h1>$restaurant.getName()</h1>
 
+#if ($restaurant.getReviews().size() != 0)
+  <ul>
+    <h2>Reviews:</h2>
+    #foreach ($review in $restaurant.getReviews())
+      <li><span class="review">$review.getDescription()</span></li>
+    #end
+  </ul>
+#else
+  <p>This restaurant has no reviews yet!  Add one below!</p>
+#end
+
+<h2>Add a Review for $restaurant.getName()</h2> <br/>
+<form action="/restaurants/$restaurant.getId()" method="post">
+  <textarea name="review" id="review" required></textarea>
+  <div>
+    <button type="submit" class="btn btn-warning">Submit Your Review</button>
+  </div>
+</form>
+
 <a href="/">Back to Homepage</a>

@@ -1,7 +1,7 @@
 <h1>All Restaurants in the $location Area</h1>
 
 #foreach($restaurant in $restaurants)
-  #if ($restaurant.getLocationId() == $location.getId())
+  #if ($restaurant.getLocationId() == $locationID)
   <a href="/restaurants/$restaurant.getId()">$restaurant.getName()</a>
   <br>
   #end

@@ -48,6 +48,16 @@ public class Restaurant {
     }
   }
 
+  public String getCuisineName() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM cuisines WHERE id=:cuisine_id;";
+      Cuisine fetchedCuisine = con.createQuery(sql)
+        .addParameter("cuisine_id", this.cuisine_id)
+        .executeAndFetchFirst(Cuisine.class);
+        return fetchedCuisine.getName();
+    }
+  }
+
   public static List<Restaurant> all() {
     String sql = "SELECT id, name FROM restaurants;";
     try(Connection con = DB.sql2o.open()) {

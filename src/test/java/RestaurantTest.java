@@ -79,4 +79,13 @@ public class RestaurantTest {
     assertTrue(myRestaurant.getReviews().containsAll(Arrays.asList(reviews)));
   }
 
+  @Test
+  public void getLocationId_RestaurantInstantiatesWithLocationId_true() {
+    Location myLocation = new Location("Northeast");
+    myLocation.save();
+    Restaurant myRestaurant = new Restaurant("Salt and Straw", myLocation.getId());
+    myRestaurant.save();
+    assertEquals(myLocation.getId(), myRestaurant.getLocationId());
+  }
+
 }

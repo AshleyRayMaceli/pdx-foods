@@ -38,6 +38,16 @@ public class Restaurant {
     return cuisine_id;
   }
 
+  public String getLocationName() {
+    try(Connection con = DB.sql2o.open()) {
+    String sql = "SELECT * FROM locations WHERE id=:location_id;";
+    Location fetchedLocation = con.createQuery(sql)
+      .addParameter("location_id", this.location_id)
+      .executeAndFetchFirst(Location.class);
+      return fetchedLocation.getName();
+    }
+  }
+
   public static List<Restaurant> all() {
     String sql = "SELECT id, name FROM restaurants;";
     try(Connection con = DB.sql2o.open()) {

@@ -98,4 +98,15 @@ public class RestaurantTest {
     myRestaurant.save();
     assertEquals(myCuisine.getId(), myRestaurant.getCuisineId());
   }
+
+  @Test
+  public void getLocationName_getLocationNameFromLocationIdInRestaurantObject_LocationName() {
+    Cuisine myCuisine = new Cuisine("Mexican");
+    myCuisine.save();
+    Location myLocation = new Location("Northeast");
+    myLocation.save();
+    Restaurant myRestaurant = new Restaurant("Salt and Straw", myLocation.getId(), myCuisine.getId());
+    myRestaurant.save();
+    assertEquals(myLocation.getName(), myRestaurant.getLocationName());
+  }
 }

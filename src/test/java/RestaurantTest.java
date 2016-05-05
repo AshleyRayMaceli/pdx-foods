@@ -80,7 +80,7 @@ public class RestaurantTest {
   }
 
   @Test
-  public void getLocationId_RestaurantInstantiatesWithLocationId_true() {
+  public void getLocationId_getLocationIdFromRestaurantObject_LocationId() {
     Location myLocation = new Location("Northeast");
     myLocation.save();
     Restaurant myRestaurant = new Restaurant("Salt and Straw", myLocation.getId());
@@ -88,4 +88,14 @@ public class RestaurantTest {
     assertEquals(myLocation.getId(), myRestaurant.getLocationId());
   }
 
+  @Test
+  public void getCuisineId_getCuisineIdFromRestaurantObject_CuisineId() {
+    Cuisine myCuisine = new Cuisine("Mexican");
+    myCuisine.save();
+    Location myLocation = new Location("Northeast");
+    myLocation.save();
+    Restaurant myRestaurant = new Restaurant("Salt and Straw", myLocation.getId(), myCuisine.getId());
+    myRestaurant.save();
+    assertEquals(myCuisine.getId(), myRestaurant.getCuisineId());
+  }
 }

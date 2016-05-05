@@ -16,6 +16,12 @@ public class Restaurant {
     this.location_id = location_id;
   }
 
+  public Restaurant(String name, int location_id, int cuisine_id) {
+    this.name = name;
+    this.location_id = location_id;
+    this.cuisine_id = cuisine_id;
+  }
+
   public String getName() {
     return name;
   }
@@ -28,6 +34,10 @@ public class Restaurant {
     return location_id;
   }
 
+  public int getCuisineId() {
+    return cuisine_id;
+  }
+
   public static List<Restaurant> all() {
     String sql = "SELECT id, name FROM restaurants;";
     try(Connection con = DB.sql2o.open()) {
@@ -38,10 +48,11 @@ public class Restaurant {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO restaurants(name, location_id) VALUES (:name, :location_id);";
+      String sql = "INSERT INTO restaurants(name, location_id, cuisine_id) VALUES (:name, :location_id, :cuisine_id);";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("location_id", this.location_id)
+        .addParameter("cuisine_id", this.cuisine_id)
         .executeUpdate()
         .getKey();
     }

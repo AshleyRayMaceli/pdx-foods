@@ -1,0 +1,10 @@
+<h1>All Restaurants in the $location Area</h1>
+
+#foreach($restaurant in $restaurants)
+  #if ($restaurant.getLocationId() == $location.getId())
+  <a href="/restaurants/$restaurant.getId()">$restaurant.getName()</a>
+  <br>
+  #end
+#end
+
+<a href="/" type="submit" class="btn btn-info">Back To Homepage</a>

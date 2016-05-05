@@ -45,5 +45,18 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/search-results", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      List<Location> locations = Location.all();
+      List<Restaurant> restaurants = Restaurant.all(); 
+      Integer dropDownResult = Integer.parseInt(request.queryParams("locationId"));
+      Location location = Location.find(dropDownResult);
+      model.put("location", location.getName());
+      model.put("locations", locations);
+      model.put("restaurants", restaurants);
+      model.put("template", "templates/search-results.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }

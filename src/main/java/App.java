@@ -48,12 +48,22 @@ public class App {
     post("/search-results", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
-      Integer dropDownResult = Integer.parseInt(request.queryParams("locationId"));
-      Location location = Location.find(dropDownResult);
+      Integer locationDropDownResult = Integer.parseInt(request.queryParams("locationId"));
+      Location location = Location.find(locationDropDownResult);
+      if (locationDropDownResult == 0) {
+        location = new Location("");
+      }
+
+      Integer cuisineDropDownResult = Integer.parseInt(request.queryParams("cuisineId"));
+      Cuisine cuisine = Cuisine.find(cuisineDropDownResult);
+      if (cuisineDropDownResult == 0) {
+        cuisine = new Cuisine("");
+      }
 
       model.put("location", location.getName());
       model.put("locationID", location.getId());
-
+      model.put("cuisine", cuisine.getName());
+      model.put("cuisineID", cuisine.getId());
       model.put("restaurants", Restaurant.all());
       model.put("template", "templates/search-results.vtl");
       return new ModelAndView(model, layout);

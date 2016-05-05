@@ -7,9 +7,19 @@
     <div class="col-md-6">
       <label for="locationId">Search By Location</label>
       <select id='locationId' name='locationId' type='text'>
-        <option value="empty">Select Location</option>
+        <option value=0>All Locations</option>
         #foreach($location in $locations)
           <option value=$location.getId()>$location.getName()</option>
+        #end
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="cuisineId">Search By Cuisine</label>
+      <select id='cuisineId' name='cuisineId' type='text'>
+        <option value=0>All Cuisines</option>
+        #foreach($cuisine in $cuisines)
+          <option value=$cuisine.getId()>$cuisine.getName()</option>
         #end
       </select>
     </div>

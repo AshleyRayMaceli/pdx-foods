@@ -1,9 +1,37 @@
-<h1>All Restaurants in the $location Area</h1>
+#if ($locationID > 0 && $cuisineID > 0)
+  <h1>All Restaurants serving $cuisine in the $location Area</h1>
 
-#foreach($restaurant in $restaurants)
-  #if ($restaurant.getLocationId() == $locationID)
-  <a href="/restaurants/$restaurant.getId()">$restaurant.getName()</a>
-  <br>
+  #foreach($restaurant in $restaurants)
+    #if ($restaurant.getLocationId() == $locationID && $restaurant.getCuisineId() == $cuisineID)
+    <a href="/restaurants/$restaurant.getId()">$restaurant.getName()</a>
+    <br>
+    #end
+  #end
+
+#elseif ($locationID > 0 && $cuisineID == 0)
+  <h1>All Restaurants in the $location Area</h1>
+
+  #foreach($restaurant in $restaurants)
+    #if ($restaurant.getLocationId() == $locationID)
+    <a href="/restaurants/$restaurant.getId()">$restaurant.getName()</a>
+    <br>
+    #end
+  #end
+#elseif ($locationID == 0 && $cuisineID > 0)
+  <h1>All Restaurants serving $cuisine Cuisine</h1>
+
+  #foreach($restaurant in $restaurants)
+    #if ($restaurant.getCuisineId() == $cuisineID)
+    <a href="/restaurants/$restaurant.getId()">$restaurant.getName()</a>
+    <br>
+    #end
+  #end
+#else
+  <h1>All Restaurants</h1>
+
+  #foreach($restaurant in $restaurants)
+    <a href="/restaurants/$restaurant.getId()">$restaurant.getName()</a>
+    <br>
   #end
 #end
 

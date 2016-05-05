@@ -11,12 +11,21 @@ public class Restaurant {
     this.name = name;
   }
 
+  public Restaurant(String name, int location_id) {
+    this.name = name;
+    this.location_id = location_id;
+  }
+
   public String getName() {
     return name;
   }
 
   public int getId() {
     return id;
+  }
+
+  public int getLocationId() {
+    return location_id;
   }
 
   public static List<Restaurant> all() {
@@ -29,9 +38,10 @@ public class Restaurant {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO restaurants(name) VALUES (:name);";
+      String sql = "INSERT INTO restaurants(name, location_id) VALUES (:name, :location_id);";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
+        .addParameter("location_id", this.location_id)
         .executeUpdate()
         .getKey();
     }

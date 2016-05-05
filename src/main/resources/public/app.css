@@ -1,5 +1,5 @@
 body {
-  /*font-family: 'FONT NAME HERE', sans-serif;*/
+  font-family: 'Comfortaa', sans-serif;
   text-align: center;
   background: url(/home1.jpg);
   background-repeat: no-repeat;
@@ -9,6 +9,7 @@ body {
 }
 
 #review {
+  font-family: sans-serif;
   width: 400px;
   height: 150px;
   color: black;

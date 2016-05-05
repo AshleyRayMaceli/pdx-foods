@@ -8,10 +8,51 @@ body {
   color: white;
 }
 
+h2 {
+  color: #D9534F;
+}
+
+a {
+  font-size: 2em;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.heading {
+  color: #D9534F;
+  text-shadow: 4px 2px 0px rgba(0, 0, 0, 1);
+}
+
+.title {
+  margin-top: 200px;
+  font-size: 4em;
+  font-weight: bold;
+  text-shadow: 4px 2px 0px rgba(0, 0, 0, 1);
+}
+
 #review {
   font-family: sans-serif;
   width: 400px;
   height: 150px;
   color: black;
   font-size: 2em;
+}
+
+#locationId, #cuisineId {
+  color: black;
+  width: 300px;
+  font-size: 20pt;
+}
+
+#submitSearch {
+  width: 150px;
+  height: 150px;
+  font-size: 32pt;
+  padding-top: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 50%;
 }

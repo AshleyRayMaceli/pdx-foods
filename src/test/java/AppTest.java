@@ -42,7 +42,7 @@ public class AppTest extends FluentTest {
   @Test
   public void restaurantsPageDisplaysAllRestaurants() {
     goTo("http://localhost:4567/");
-    click("a", withText("View All Restaurants"));
+    submit(".btn");
     assertThat(pageSource().contains("Boxer Ramen"));
     assertThat(pageSource().contains("Salt and Straw"));
   }
